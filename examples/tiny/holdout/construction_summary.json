@@ -1,0 +1,7 @@
+{
+  "dataset": "tiny",
+  "stage": "holdout",
+  "source_count": 2,
+  "source_disjoint_from": "tiny_dev",
+  "description": "Small synthetic rows for schema validation and documentation only. Do not use for method claims."
+}

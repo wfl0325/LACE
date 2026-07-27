@@ -1,0 +1,118 @@
+{
+  "schema_version": "lace_search_space_v1",
+  "notes": [
+    "This is the preregistered Qwen development search space used for the released main result.",
+    "Holdout evaluation must not override any value selected on development data.",
+    "Other model families must use a separate model-specific search config rather than reusing these layers.",
+    "Feature top-k is band-global: select top-k features across all layers in a band, then group the selected features by layer for multi-layer intervention.",
+    "The low gate quantiles prioritize Q1 repair while Q2 and clean-prompt damage remain constrained."
+  ],
+  "candidate_layers": [10, 11, 12, 13, 14],
+  "candidate_bands": [
+    {
+      "name": "L10",
+      "layers": [10]
+    },
+    {
+      "name": "L11",
+      "layers": [11]
+    },
+    {
+      "name": "L12",
+      "layers": [12]
+    },
+    {
+      "name": "L13",
+      "layers": [13]
+    },
+    {
+      "name": "L14",
+      "layers": [14]
+    },
+    {
+      "name": "L10-L12",
+      "layers": [10, 11, 12]
+    },
+    {
+      "name": "L12-L14",
+      "layers": [12, 13, 14]
+    },
+    {
+      "name": "L10-L14",
+      "layers": [10, 11, 12, 13, 14]
+    }
+  ],
+  "locator": {
+    "score": "peak_zA",
+    "candidate_layers_source": "selected_band",
+    "top_tokens": [1],
+    "standardization": "calibration_split_zscore"
+  },
+  "feature_banks": {
+    "A": {
+      "name": "wrong_attractor_features",
+      "candidate_top_k": [10, 50],
+      "ranking": "causal_score",
+      "top_k_policy": "band_global"
+    },
+    "R": {
+      "name": "robust_state_features",
+      "candidate_top_k": [0, 10, 50],
+      "ranking": "causal_score",
+      "top_k_policy": "band_global"
+    }
+  },
+  "intervention": {
+    "mixture_modes": [
+      {
+        "name": "suppression_only",
+        "alpha_A_multiplier": 1.0,
+        "alpha_R_multiplier": 0.0
+      },
+      {
+        "name": "enhancement_only",
+        "alpha_A_multiplier": 0.0,
+        "alpha_R_multiplier": 1.0
+      },
+      {
+        "name": "combo_1_1",
+        "alpha_A_multiplier": 1.0,
+        "alpha_R_multiplier": 1.0
+      },
+      {
+        "name": "suppress_heavy_2_1",
+        "alpha_A_multiplier": 2.0,
+        "alpha_R_multiplier": 1.0
+      },
+      {
+        "name": "enhance_heavy_1_2",
+        "alpha_A_multiplier": 1.0,
+        "alpha_R_multiplier": 2.0
+      }
+    ],
+    "alpha_A_values": [2.0, 3.0],
+    "alpha_R_values": [2.0, 3.0],
+    "decoder_mapping": "sae_decoder_direction",
+    "norm_matching": true
+  },
+  "gate": {
+    "type": "peak_zA_and_self_conflict",
+    "tau_A_quantiles": [0.2, 0.3, 0.4, 0.5, 0.6],
+    "tau_C_values": [0.0, 0.5, 1.0, 2.0],
+    "candidate_extractor": "template_or_regex_v1",
+    "default_span_mode": "extracted",
+    "allowed_span_modes": ["extracted", "gold", "full_prompt_peak"],
+    "final_table_span_mode": "extracted"
+  },
+  "selection_objective": {
+    "name": "maximize_q1corr_report_true_damage",
+    "primary_metric": "q1_correction_rate",
+    "tie_breakers": [
+      "higher_q1_delta_margin",
+      "lower_q2_damage",
+      "lower_clean_damage",
+      "lower_true_damage"
+    ]
+  },
+  "model_specific_overrides": {}
+}

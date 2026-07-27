@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+configs/models.local.json
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+*.log
+*.nohup.log
+.DS_Store

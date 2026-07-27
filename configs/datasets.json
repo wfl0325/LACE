@@ -1,0 +1,133 @@
+{
+  "schema_version": "lace_dataset_registry_v1",
+  "notes": [
+    "Paths are relative to the LACE repository unless absolute.",
+    "Development data may be used for behavior labeling, discovery, and calibration.",
+    "Holdout data may be used for model-dependent labels and final evaluation only."
+  ],
+  "datasets": {
+    "pqpqa": {
+      "display_name": "PQPQA",
+      "development": {
+        "name": "pqpqa_dev",
+        "stage": "dev",
+        "source_count": 1000,
+        "known_fact_clean": "data/pqpqa/dev/known_fact_clean_views.jsonl",
+        "false_suggestion": "data/pqpqa/dev/unified_false_suggestion_views.jsonl",
+        "side_effect": "data/pqpqa/dev/unified_side_effect_views.jsonl",
+        "construction_summary": "data/pqpqa/dev/construction_summary.json",
+        "allowed_for": [
+          "known_fact_filtering",
+          "base_behavior",
+          "q_group_labeling",
+          "feature_discovery",
+          "calibration"
+        ]
+      },
+      "holdout": {
+        "name": "pqpqa_holdout",
+        "stage": "holdout",
+        "source_count": 500,
+        "source_disjoint_from": "pqpqa_dev",
+        "known_fact_clean": "data/pqpqa/holdout/known_fact_clean_views.jsonl",
+        "mixed_eval": "data/pqpqa/holdout/mixed_eval_views.jsonl",
+        "false_suggestion": "data/pqpqa/holdout/unified_false_suggestion_views.jsonl",
+        "side_effect": "data/pqpqa/holdout/unified_side_effect_views.jsonl",
+        "construction_summary": "data/pqpqa/holdout/construction_summary.json",
+        "allowed_for": [
+          "known_fact_filtering",
+          "base_behavior",
+          "q_group_labeling",
+          "final_evaluation"
+        ],
+        "forbidden_for": [
+          "feature_discovery",
+          "layer_selection",
+          "top_k_selection",
+          "threshold_selection",
+          "strength_selection",
+          "mixture_selection"
+        ]
+      }
+    },
+    "counterfact": {
+      "display_name": "CounterFact-FS",
+      "development": {
+        "name": "counterfact_dev",
+        "stage": "dev",
+        "source_count": 1000,
+        "known_fact_clean": "data/counterfact/dev/known_fact_clean_views.jsonl",
+        "false_suggestion": "data/counterfact/dev/unified_false_suggestion_views.jsonl",
+        "side_effect": "data/counterfact/dev/unified_side_effect_views.jsonl",
+        "construction_summary": "data/counterfact/dev/construction_summary.json",
+        "allowed_for": [
+          "known_fact_filtering",
+          "base_behavior",
+          "q_group_labeling",
+          "feature_discovery",
+          "calibration"
+        ]
+      },
+      "holdout": {
+        "name": "counterfact_holdout",
+        "stage": "holdout",
+        "source_count": 500,
+        "source_disjoint_from": "counterfact_dev",
+        "known_fact_clean": "data/counterfact/holdout/known_fact_clean_views.jsonl",
+        "mixed_eval": "data/counterfact/holdout/mixed_eval_views.jsonl",
+        "false_suggestion": "data/counterfact/holdout/unified_false_suggestion_views.jsonl",
+        "side_effect": "data/counterfact/holdout/unified_side_effect_views.jsonl",
+        "construction_summary": "data/counterfact/holdout/construction_summary.json",
+        "allowed_for": [
+          "known_fact_filtering",
+          "base_behavior",
+          "q_group_labeling",
+          "final_evaluation"
+        ],
+        "forbidden_for": [
+          "feature_discovery",
+          "layer_selection",
+          "top_k_selection",
+          "threshold_selection",
+          "strength_selection",
+          "mixture_selection"
+        ]
+      }
+    },
+    "tiny": {
+      "display_name": "Tiny Example",
+      "development": {
+        "name": "tiny_dev",
+        "stage": "dev",
+        "source_count": 4,
+        "known_fact_clean": "examples/tiny/dev/known_fact_clean_views.jsonl",
+        "false_suggestion": "examples/tiny/dev/unified_false_suggestion_views.jsonl",
+        "side_effect": "examples/tiny/dev/unified_side_effect_views.jsonl",
+        "construction_summary": "examples/tiny/dev/construction_summary.json",
+        "allowed_for": [
+          "format_validation",
+          "documentation_example"
+        ]
+      },
+      "holdout": {
+        "name": "tiny_holdout",
+        "stage": "holdout",
+        "source_count": 2,
+        "source_disjoint_from": "tiny_dev",
+        "known_fact_clean": "examples/tiny/holdout/known_fact_clean_views.jsonl",
+        "mixed_eval": "examples/tiny/holdout/mixed_eval_views.jsonl",
+        "false_suggestion": "examples/tiny/holdout/unified_false_suggestion_views.jsonl",
+        "side_effect": "examples/tiny/holdout/unified_side_effect_views.jsonl",
+        "construction_summary": "examples/tiny/holdout/construction_summary.json",
+        "allowed_for": [
+          "format_validation",
+          "documentation_example"
+        ],
+        "forbidden_for": [
+          "method_selection"
+        ]
+      }
+    }
+  },
+  "default_output_root": "outputs"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "lace_side_effect_constraints_v1",
+  "profile_name": "q1_focused_report_true_damage",
+  "notes": [
+    "This is the development-calibration profile used for the released main result.",
+    "Q2 and clean/cue side effects remain constrained.",
+    "True-suggestion damage is reported as a trade-off at base calibration and is constrained again during final LACE configuration selection.",
+    "Holdout evaluation must not change these values."
+  ],
+  "default": {
+    "eps_q2_damage": 0.02,
+    "eps_true_damage": 1.0,
+    "eps_true_strict_damage": 1.0,
+    "eps_clean_damage": 0.03,
+    "eps_clean_strict_damage": 0.03,
+    "eps_cue_damage": 0.03,
+    "eps_cue_trigger_rate": 0.05
+  },
+  "reported_metrics": [
+    "q1_correction_rate",
+    "q1_delta_margin",
+    "q1_trigger_rate",
+    "q1_correction_given_trigger",
+    "q2_damage",
+    "true_damage",
+    "true_strict_damage",
+    "clean_damage",
+    "clean_strict_damage",
+    "cue_damage",
+    "cue_trigger_rate"
+  ]
+}

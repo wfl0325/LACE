@@ -1,0 +1,24 @@
+{
+  "schema_version": "lace_search_space_v1",
+  "notes": [
+    "The profile is evaluated on the development calibration split only.",
+    "Holdout data must not be read when selecting a profile candidate.",
+    "unified_v1 compares preregistered zero and positive gate thresholds, feature mixtures, and intervention strengths.",
+    "Only full_va is part of the released LACE main method."
+  ],
+  "profiles": {
+    "unified_v1": {
+      "mixture_modes": "all",
+      "vector_constructions": "full_va",
+      "gate_modes": "peak_zA_tau",
+      "tau_a_scales": "0.0,0.25,0.5,0.75,1.0,1.25,1.5",
+      "tau_a_values": "",
+      "tau_c_values": "0.0,0.5,1.0,2.0,4.0",
+      "intervention_strengths": "1.0,2.0,3.0",
+      "require_positive_tau_a": false,
+      "require_positive_tau_c": false,
+      "require_all_gate_boundary_regimes": true,
+      "selection_policy": "maximize_q1_correction_subject_to_damage_constraints"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "dataset": "tiny",
+  "stage": "dev",
+  "source_count": 4,
+  "description": "Small synthetic rows for schema validation and documentation only. Do not use for method claims."
+}
