@@ -278,7 +278,7 @@ def build_audit(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset", choices=["pqpqa", "counterfact"], required=True)
+    parser.add_argument("--dataset", choices=["popqa", "counterfact"], required=True)
     parser.add_argument("--model-tag", required=True)
     parser.add_argument("--root", default=str(repo_root()))
     parser.add_argument("--datasets-config", default="configs/datasets.json")

@@ -6,16 +6,16 @@
     "Holdout data may be used for model-dependent labels and final evaluation only."
   ],
   "datasets": {
-    "pqpqa": {
-      "display_name": "PQPQA",
+    "popqa": {
+      "display_name": "POPQA",
       "development": {
-        "name": "pqpqa_dev",
+        "name": "popqa_dev",
         "stage": "dev",
         "source_count": 1000,
-        "known_fact_clean": "data/pqpqa/dev/known_fact_clean_views.jsonl",
-        "false_suggestion": "data/pqpqa/dev/unified_false_suggestion_views.jsonl",
-        "side_effect": "data/pqpqa/dev/unified_side_effect_views.jsonl",
-        "construction_summary": "data/pqpqa/dev/construction_summary.json",
+        "known_fact_clean": "data/popqa/dev/known_fact_clean_views.jsonl",
+        "false_suggestion": "data/popqa/dev/unified_false_suggestion_views.jsonl",
+        "side_effect": "data/popqa/dev/unified_side_effect_views.jsonl",
+        "construction_summary": "data/popqa/dev/construction_summary.json",
         "allowed_for": [
           "known_fact_filtering",
           "base_behavior",
@@ -25,15 +25,15 @@
         ]
       },
       "holdout": {
-        "name": "pqpqa_holdout",
+        "name": "popqa_holdout",
         "stage": "holdout",
         "source_count": 500,
-        "source_disjoint_from": "pqpqa_dev",
-        "known_fact_clean": "data/pqpqa/holdout/known_fact_clean_views.jsonl",
-        "mixed_eval": "data/pqpqa/holdout/mixed_eval_views.jsonl",
-        "false_suggestion": "data/pqpqa/holdout/unified_false_suggestion_views.jsonl",
-        "side_effect": "data/pqpqa/holdout/unified_side_effect_views.jsonl",
-        "construction_summary": "data/pqpqa/holdout/construction_summary.json",
+        "source_disjoint_from": "popqa_dev",
+        "known_fact_clean": "data/popqa/holdout/known_fact_clean_views.jsonl",
+        "mixed_eval": "data/popqa/holdout/mixed_eval_views.jsonl",
+        "false_suggestion": "data/popqa/holdout/unified_false_suggestion_views.jsonl",
+        "side_effect": "data/popqa/holdout/unified_side_effect_views.jsonl",
+        "construction_summary": "data/popqa/holdout/construction_summary.json",
         "allowed_for": [
           "known_fact_filtering",
           "base_behavior",

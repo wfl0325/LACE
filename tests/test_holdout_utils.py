@@ -14,7 +14,7 @@ def formal_base_config() -> dict:
         "uses_gold_span_fields": False,
         "span_mode": "extracted",
         "uses_correct_answer_for_gate": False,
-        "dataset": "pqpqa",
+        "dataset": "popqa",
         "model_tag": "model",
         "selected_config": {
             "tau_A_value": 0.0,
@@ -30,7 +30,7 @@ def test_formal_base_config_passes_guard() -> None:
     assert config_guard(
         formal_base_config(),
         Path("lace_base_config.json"),
-        "pqpqa",
+        "popqa",
         "model",
     ) == []
 

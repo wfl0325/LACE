@@ -187,7 +187,7 @@ def write_report(report: Path, payload: dict) -> None:
         for row in payload.get("template_summary", [])
     ]
     lines = [
-        "# PQPQA False-Suggestion Base Behavior",
+        "# POPQA False-Suggestion Base Behavior",
         "",
         "## Overall",
         "",

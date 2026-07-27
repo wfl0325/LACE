@@ -8,7 +8,7 @@ RUNNER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="${ROOT:-$(cd "${RUNNER_DIR}/../.." && pwd)}"
 PYTHON="${PYTHON:-python}"
 
-DATASET="${DATASET:-pqpqa}"
+DATASET="${DATASET:-popqa}"
 MODEL_TAG="${MODEL_TAG:-qwen35_2b}"
 DEVICE="${DEVICE:-cuda:0}"
 STAGE="${STAGE:-all}"
@@ -20,9 +20,9 @@ INCLUDE_MULTILAYER_FORMAL="${INCLUDE_MULTILAYER_FORMAL:-1}"
 BASE_SELECTION_POLICY="${BASE_SELECTION_POLICY:-q1_max}"
 
 case "${DATASET}" in
-  pqpqa|counterfact) ;;
+  popqa|counterfact) ;;
   *)
-    echo "[LACE] DATASET must be pqpqa or counterfact, got ${DATASET}" >&2
+    echo "[LACE] DATASET must be popqa or counterfact, got ${DATASET}" >&2
     exit 2
     ;;
 esac

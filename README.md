@@ -153,7 +153,7 @@ and Q1 repair as the primary feasible-config selection criterion.
 Run the complete pipeline for one dataset/model pair:
 
 ```bash
-DATASET=pqpqa \
+DATASET=popqa \
 MODEL_TAG=qwen35_2b \
 DEVICE=cuda:0 \
 bash scripts/runners/run_lace_pipeline.sh
@@ -176,7 +176,7 @@ For example, after behavior labels, development splits, feature banks, and the
 base calibration already exist:
 
 ```bash
-DATASET=pqpqa MODEL_TAG=qwen35_2b DEVICE=cuda:0 STAGE=final \
+DATASET=popqa MODEL_TAG=qwen35_2b DEVICE=cuda:0 STAGE=final \
 bash scripts/runners/run_lace_pipeline.sh
 ```
 

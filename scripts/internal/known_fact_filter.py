@@ -206,7 +206,7 @@ def write_report(report: Path, payload: dict) -> None:
         for row in payload["margin_bin_summary"]
     ]
     lines = [
-        "# PQPQA Known-Fact 过滤报告",
+        "# POPQA Known-Fact 过滤报告",
         "",
         "## 总览",
         "",
@@ -281,8 +281,8 @@ def write_report(report: Path, payload: dict) -> None:
         "",
         f"- Known Fact Set 定义为：5 个 clean paraphrases 中至少 `{payload['config']['known_min_correct']}` 个具有正 candidate margin。",
         f"- Strong Known Fact Set 定义为：5/5 全部为正，且平均 clean margin >= `{payload['config']['strong_mean_margin']}`。",
-        "- 正确性按 PQPQA 正确 object 与固定 same-relation wrong object 的 candidate margin 判断。",
-        "- 子集现象指标复用已有 PQPQA multitemplate false-suggestion base-behavior records。",
+        "- 正确性按 POPQA 正确 object 与固定 same-relation wrong object 的 candidate margin 判断。",
+        "- 子集现象指标复用已有 POPQA multitemplate false-suggestion base-behavior records。",
         "",
     ]
     report.parent.mkdir(parents=True, exist_ok=True)

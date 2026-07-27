@@ -845,7 +845,7 @@ def run_exact_scoring(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset", choices=["pqpqa", "counterfact"], required=True)
+    parser.add_argument("--dataset", choices=["popqa", "counterfact"], required=True)
     parser.add_argument("--model-tag", required=True)
     parser.add_argument("--root", type=Path, default=repo_root())
     parser.add_argument("--models-config", type=Path)
