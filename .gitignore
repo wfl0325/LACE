@@ -9,6 +9,10 @@ venv/
 configs/models.local.json
 data/*
 !data/.gitkeep
+!data/popqa/
+!data/popqa/**
+!data/counterfact/
+!data/counterfact/**
 outputs/*
 !outputs/.gitkeep
 
