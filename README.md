@@ -5,10 +5,7 @@ test-time intervention method for factual QA prompts that contain an explicit
 but incorrect suggested answer.
 
 LACE uses sparse-autoencoder (SAE) features and a frozen gating policy to reduce
-wrong-answer copying while preserving clean factual behavior. The repository is
-organized as a reproducible research codebase: dataset schemas, model/SAE
-registries, pipeline stages, validation utilities, and holdout evaluation are all
-kept in versioned scripts and configuration files.
+wrong-answer copying while preserving clean factual behavior.
 
 ## What This Repository Contains
 
@@ -20,9 +17,6 @@ kept in versioned scripts and configuration files.
 - Model registry template for local model and SAE paths.
 - Unit tests and model-free dataset validation utilities.
 
-This repository focuses on the final LACE method. It does not include exploratory
-phenomenon studies, supplementary ablations, baseline implementations, or model
-weights.
 
 ## Method Overview
 
@@ -245,6 +239,3 @@ outputs/{dataset}/{model}/
     summary.json
     audit.json
 ```
-
-`outputs/` is ignored by Git. Commit only the source code, configs, and dataset
-files needed to reproduce the run.
