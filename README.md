@@ -7,6 +7,10 @@ but incorrect suggested answer.
 LACE uses sparse-autoencoder (SAE) features and a frozen gating policy to reduce
 wrong-answer copying while preserving clean factual behavior.
 
+## Method Framework
+
+![LACE method framework](figures/LACE.png)
+
 ## What This Repository Contains
 
 - End-to-end LACE pipeline scripts for behavior labeling, source splitting,
