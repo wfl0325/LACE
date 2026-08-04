@@ -159,14 +159,14 @@ def write_jsonl(path: Path, rows: list[dict]) -> None:
 def write_report(report: Path, payload: dict) -> None:
     summary = payload["summary"]
     subset_name = {
-        "evaluated_sources": "全部评估样本",
+        "evaluated_sources": "All evaluated sources",
         "known_4_of_5": "Known 4/5",
         "strong_5_of_5": "Strong 5/5",
     }
     bin_name = {
-        "low": "低 clean margin",
-        "medium": "中 clean margin",
-        "high": "高 clean margin",
+        "low": "Low clean margin",
+        "medium": "Medium clean margin",
+        "high": "High clean margin",
     }
     subset_rows = [
         [
@@ -206,18 +206,18 @@ def write_report(report: Path, payload: dict) -> None:
         for row in payload["margin_bin_summary"]
     ]
     lines = [
-        "# POPQA Known-Fact 过滤报告",
+        "# POPQA Known-Fact Filtering Report",
         "",
-        "## 总览",
+        "## Overview",
         "",
         markdown_table(
             [
-                "事实源数",
-                "Clean 改写数",
+                "Source Count",
+                "Clean Paraphrase Count",
                 "Known 4/5",
                 "Strong 5/5",
-                "平均通过率",
-                "平均 Margin",
+                "Mean Pass Rate",
+                "Mean Margin",
             ],
             [
                 [
@@ -231,12 +231,12 @@ def write_report(report: Path, payload: dict) -> None:
             ],
         ),
         "",
-        "## 子集上的 False-Suggestion 现象",
+        "## False-Suggestion Behavior by Subset",
         "",
         markdown_table(
             [
-                "子集",
-                "事实源数",
+                "Subset",
+                "Source Count",
                 "False Pairs",
                 "Clean Acc",
                 "False Acc",
@@ -249,27 +249,27 @@ def write_report(report: Path, payload: dict) -> None:
             subset_rows,
         ),
         "",
-        "## 按关系类型统计 Known-Fact",
+        "## Known-Fact Summary by Relation",
         "",
         markdown_table(
             [
-                "关系",
-                "事实源数",
+                "Relation",
+                "Source Count",
                 "Known 4/5",
                 "Strong 5/5",
-                "平均通过率",
-                "平均 Margin",
+                "Mean Pass Rate",
+                "Mean Margin",
             ],
             relation_rows,
         ),
         "",
-        "## Clean Margin 分桶",
+        "## Clean Margin Bins",
         "",
         markdown_table(
             [
-                "分桶",
-                "事实源数",
-                "Known 平均 Margin",
+                "Bin",
+                "Source Count",
+                "Known Mean Margin",
                 "False Acc",
                 "Q1 Rate",
                 "Mean Delta Margin",
@@ -277,12 +277,12 @@ def write_report(report: Path, payload: dict) -> None:
             bin_rows,
         ),
         "",
-        "## 备注",
+        "## Notes",
         "",
-        f"- Known Fact Set 定义为：5 个 clean paraphrases 中至少 `{payload['config']['known_min_correct']}` 个具有正 candidate margin。",
-        f"- Strong Known Fact Set 定义为：5/5 全部为正，且平均 clean margin >= `{payload['config']['strong_mean_margin']}`。",
-        "- 正确性按 POPQA 正确 object 与固定 same-relation wrong object 的 candidate margin 判断。",
-        "- 子集现象指标复用已有 POPQA multitemplate false-suggestion base-behavior records。",
+        f"- The Known Fact Set contains sources where at least `{payload['config']['known_min_correct']}` of 5 clean paraphrases have positive candidate margin.",
+        f"- The Strong Known Fact Set contains sources where all 5 clean paraphrases have positive candidate margin and mean clean margin >= `{payload['config']['strong_mean_margin']}`.",
+        "- Correctness is measured by the candidate margin between the POPQA correct object and a fixed same-relation wrong object.",
+        "- Subset behavior metrics reuse existing POPQA multitemplate false-suggestion base-behavior records.",
         "",
     ]
     report.parent.mkdir(parents=True, exist_ok=True)
