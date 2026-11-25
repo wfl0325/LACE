@@ -9,7 +9,7 @@ wrong-answer copying while preserving clean factual behavior.
 
 ## Method Framework
 
-![LACE method framework](figures/LACE.png)
+[![LACE method framework](figures/LACE1119.png)](figures/LACE1119.pdf)
 
 ## What This Repository Contains
 
